@@ -1,7 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
 function Understanding() {
@@ -10,12 +10,18 @@ function Understanding() {
 
   const dispatch = useDispatch();
 
-  const [rating, setRating] = useState(5);
+  const feedback = useSelector(store => store.feedbackReducer);
+
+  const defaultState = (feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? feedback.understanding : 5;
+
+  const [rating, setRating] = useState(defaultState);
+
+  const path = (feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? '/thank-you' : '/support';
 
   const handleClick = () => {
     if (rating >= 1 && rating <= 5 && Number.isInteger(rating)) {
       dispatch({type: 'ADD_FEEDBACK', payload: {property: 'understanding', value: rating}});
-      history.push('/support');
+      history.push(path);
     } else {
       alert("Ratings must be between 1 and 5");
     }
@@ -24,6 +30,7 @@ function Understanding() {
   return (
     <>
       <h1>How well are you understanding the content?</h1>
+      {(feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? <div /> :
       <Button
         id="button"
         onClick={() => history.push('/')}
@@ -31,7 +38,7 @@ function Understanding() {
         color="primary"
       >
         Back
-      </Button>
+      </Button>}
       <TextField
         id="standard-number"
         label="Understanding?"
@@ -43,6 +50,14 @@ function Understanding() {
           shrink: true,
         }}
       />
+      {(feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? <Button
+        id="button"
+        onClick={handleClick}
+        variant="contained"
+        color="primary"
+      >
+        Return
+      </Button> :
       <Button
         id="button"
         onClick={handleClick}
@@ -50,7 +65,7 @@ function Understanding() {
         color="primary"
       >
         Next
-      </Button>
+      </Button> }
     </>
   );
 }

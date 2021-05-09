@@ -1,7 +1,7 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
-import {useDispatch} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router-dom';
 
 function Supported() {
@@ -10,7 +10,13 @@ function Supported() {
 
   const dispatch = useDispatch();
 
-  const [rating, setRating] = useState(5);
+  const feedback = useSelector(store => store.feedbackReducer);
+
+  const defaultState = (feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? feedback.supported : 5;
+
+  const [rating, setRating] = useState(defaultState);
+
+  const path = (feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? '/thank-you' : '/understanding';
 
   const handleClick = () => {
     if (rating >= 1 && rating <= 5 && Number.isInteger(rating)) {

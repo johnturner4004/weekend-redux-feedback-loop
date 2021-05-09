@@ -5,12 +5,12 @@ import {useDispatch, useSelector} from 'react-redux';
 import {useHistory} from 'react-router';
 
 function Feeling() {
+  
+    const history = useHistory();
 
   const dispatch = useDispatch();
 
   const feedback = useSelector(store => store.feedbackReducer);
-
-  const history = useHistory();
 
   const defaultState = (feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? feedback.feeling : 5;
 
