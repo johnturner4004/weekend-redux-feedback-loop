@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-function Supported() {
+function Comments() {
 
   const history = useHistory();
 
@@ -12,10 +12,16 @@ function Supported() {
 
   const feedback = useSelector(store => store.feedbackReducer);
 
+  // checks for existing feedback and defaults to 'none' if there isn't any
   const defaultState = (feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? feedback.comments : 'none';
 
+    // hook to store rating until user clicks next
   const [comment, setComment] = useState(defaultState);
 
+  // conditional path is not necessary since ThankYou.jsx will always be after
+  // Comments.jsx
+
+    // dispatches date and pushes to the next page
   const handleClick = () => {
     dispatch({
       type: "ADD_FEEDBACK",
@@ -46,6 +52,7 @@ function Supported() {
           shrink: true,
         }}
       />
+      {/* uses presence or absence of data values to determine if Return of Next button is necessary.  */}
       {(feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? <Button
         id="button"
         onClick={handleClick}
@@ -63,7 +70,7 @@ function Supported() {
         Next
       </Button> }
     </>
-  );
+  )
 }
 
-export default Supported;
+export default Comments;

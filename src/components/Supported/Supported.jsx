@@ -12,12 +12,18 @@ function Supported() {
 
   const feedback = useSelector(store => store.feedbackReducer);
 
+    // checks for existing feedback and defaults to 'none' if there isn't any
   const defaultState = (feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? feedback.support : 5;
 
+    // hook to store rating until user clicks next
   const [rating, setRating] = useState(defaultState);
 
+    // uses feedback variable to determine if page was navigated to from the next
+  // button of ThankYou.jsx. On ThankYou.jsx, all info will be present. Then
+  // navigated to the proper page when button is clicked
   const path = (feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? '/thank-you' : '/comments';
 
+    // dispatches date and pushes to the next page
   const handleClick = () => {
     if (rating >= 1 && rating <= 5 && Number.isInteger(rating)) {
       dispatch({type: 'ADD_FEEDBACK', payload: {property: 'support', value: rating}});
@@ -50,6 +56,7 @@ function Supported() {
           shrink: true,
         }}
       />
+      {/* uses presence or absence of data values to determine if Return of Next button is necessary.  */}
       {(feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? <Button
         id="button"
         onClick={handleClick}

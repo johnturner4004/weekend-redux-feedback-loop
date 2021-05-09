@@ -2,8 +2,11 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 
 function Admin() {
+
+  // hook to store data from the database
   const [feedback, setFeedback] = useState([]);
 
+  // Receives feedback data from database
   const getFeedback = () => {
     axios
       .get("/feedback")
@@ -17,6 +20,7 @@ function Admin() {
       });
   };
 
+  //calls getFeedback() when page loads
   useEffect(() => {
     getFeedback();
   }, []);
@@ -32,7 +36,6 @@ function Admin() {
               <th>Understanding</th>
               <th>Support</th>
               <th>Comments</th>
-              <th>Delete Row</th>
             </tr>
           </thead>
           <tbody>

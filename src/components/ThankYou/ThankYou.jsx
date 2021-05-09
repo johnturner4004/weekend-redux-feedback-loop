@@ -9,8 +9,10 @@ function ThankYou() {
 
   const dispatch = useDispatch();
 
+  //retrieves data from feedbackReducer
   const feedback = useSelector((store) => store.feedbackReducer);
 
+  // sends data to the database, clears store, and sends user back to beginning of form
   function handleClick() {
     console.log("click");
     axios.post('/feedback', feedback)
