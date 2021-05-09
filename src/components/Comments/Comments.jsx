@@ -14,8 +14,9 @@ function Supported() {
   const handleClick = () => {
     dispatch({
       type: "ADD_FEEDBACK",
-      payload: { property: "comments", value: comment },
+      payload: { property: "comments", value: comment }
     });
+    history.push('/thank-you');
   };
 
   return (

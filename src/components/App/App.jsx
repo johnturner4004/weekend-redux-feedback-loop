@@ -6,6 +6,7 @@ import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Supported from '../Supported/Supported';
 import Comments from '../Comments/Comments'
+import ThankYou from '../ThankYou/ThankYou'
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
         <Route path="/understanding" component={Understanding} />
         <Route path="/supported" component={Supported} />
         <Route path="/comments" component={Comments} />
+        <Route path="/thank-you" component={ThankYou} />
       </Router>
     </div>
   );
