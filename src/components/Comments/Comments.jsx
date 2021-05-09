@@ -1,15 +1,20 @@
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 
 function Supported() {
+
   const history = useHistory();
 
   const dispatch = useDispatch();
 
-  const [comment, setComment] = useState('');
+  const feedback = useSelector(store => store.feedbackReducer);
+
+  const defaultState = (feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? feedback.comments : 'none';
+
+  const [comment, setComment] = useState(defaultState);
 
   const handleClick = () => {
     dispatch({
@@ -22,12 +27,15 @@ function Supported() {
   return (
     <>
       <h1>Any comments you want to leave?</h1>
+      {(feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? <div /> :
       <Button
         id="button"
-        onClick={() => history.push('/support')}
+        onClick={() => history.push('/understanding')}
         variant="contained"
         color="primary"
-      >Back</Button>
+      >
+        Back
+      </Button>}
       <TextField
         id="standard-basic"
         label="Comments?"
@@ -38,6 +46,14 @@ function Supported() {
           shrink: true,
         }}
       />
+      {(feedback.feeling && feedback.understanding && feedback.support && feedback.comments) ? <Button
+        id="button"
+        onClick={handleClick}
+        variant="contained"
+        color="primary"
+      >
+        Return
+      </Button> :
       <Button
         id="button"
         onClick={handleClick}
@@ -45,7 +61,7 @@ function Supported() {
         color="primary"
       >
         Next
-      </Button>
+      </Button> }
     </>
   );
 }

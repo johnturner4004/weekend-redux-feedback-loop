@@ -35,12 +35,12 @@ function ThankYou() {
                 </td>
               </tr>
               <tr>
-                <td>Support: </td>
-                <td>{feedback.support}</td>
+                <td>Understanding: </td>
+                <td>{feedback.understanding}</td>
                 <td>
                   <Button
                     id="button"
-                    onClick={() => history.push("/support")}
+                    onClick={() => history.push("/understanding")}
                     variant="contained"
                     color="primary"
                   >
@@ -49,12 +49,12 @@ function ThankYou() {
                 </td>
               </tr>
               <tr>
-                <td>Understanding: </td>
-                <td>{feedback.understanding}</td>
+                <td>Support: </td>
+                <td>{feedback.support}</td>
                 <td>
                   <Button
                     id="button"
-                    onClick={() => history.push("/understanding")}
+                    onClick={() => history.push("/support")}
                     variant="contained"
                     color="primary"
                   >
