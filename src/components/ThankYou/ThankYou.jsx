@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import "./ThankYou.css";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router";
@@ -7,11 +7,22 @@ import axios from 'axios'
 function ThankYou() {
   const history = useHistory();
 
+  const dispatch = useDispatch();
+
   const feedback = useSelector((store) => store.feedbackReducer);
 
   function handleClick() {
     console.log("click");
-    axios.push()
+    axios.post('/feedback', feedback)
+    .then(response => {
+      console.log('Added feedback to database', response);
+    })
+    .catch(error => {
+      console.log('Unable to add feedback to database', error);
+      alert('unable to add feedback to server');
+    });
+    dispatch({type: 'CLEAR_FEEDBACK'});
+    history.push('/');
   }
 
   return (

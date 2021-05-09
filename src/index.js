@@ -17,36 +17,6 @@ const feedbackReducer = (state = {}, action) => {
   return state
 }
 
-// const feelingReducer = (state = [], action) => {
-//   if (action.type === `ADD_FEELING`) {
-//     return [...state, action.payload];
-//   }
-//   if (action.type ===`CLEAR_FEEDBACK`) {
-//     return []
-//   }
-//   return state;
-// }
-
-// const feelingReducer = (state = [], action) => {
-//   if (action.type === `ADD_FEELING`) {
-//     return [...state, action.payload];
-//   }
-//   if (action.type ===`CLEAR_FEEDBACK`) {
-//     return []
-//   }
-//   return state;
-// }
-
-// const feelingReducer = (state = [], action) => {
-//   if (action.type === `ADD_FEELING`) {
-//     return [...state, action.payload];
-//   }
-//   if (action.type ===`CLEAR_FEEDBACK`) {
-//     return []
-//   }
-//   return state;
-// }
-
 const storeInstance = createStore(
   combineReducers({
     feedbackReducer
