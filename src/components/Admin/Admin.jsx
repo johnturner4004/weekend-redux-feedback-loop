@@ -1,6 +1,5 @@
 import axios from "axios";
 import { useState, useEffect } from "react";
-import DeleteSweepRoundedIcon from "@material-ui/icons/DeleteSweepRounded";
 
 function Admin() {
   const [feedback, setFeedback] = useState([]);
@@ -17,11 +16,6 @@ function Admin() {
         alert("Unable to get feedback from server");
       });
   };
-
-  const handleDelete = () => {
-    let id = this.data;
-    console.log('click', id);
-  }
 
   useEffect(() => {
     getFeedback();
@@ -48,7 +42,6 @@ function Admin() {
                 <td>{result.understanding}</td>
                 <td>{result.support}</td>
                 <td>{result.comments}</td>
-                <td><DeleteSweepRoundedIcon onClick={handleDelete}/></td>
               </tr>
             ))}
           </tbody>

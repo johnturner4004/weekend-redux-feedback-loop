@@ -18,7 +18,6 @@ router.get('/', (req, res) => {
 router.post('/', (req, res) => {
   let newFeedback = req.body;
   console.log('Adding feedback', newFeedback);
-
   let queryText = `INSERT INTO "feedback" ("feeling", "understanding", "support", "comments")
   VALUES($1, $2, $3, $4);`;
   pool.query(queryText, [newFeedback.feeling, newFeedback.understanding, newFeedback.support, newFeedback.comments])
@@ -29,6 +28,20 @@ router.post('/', (req, res) => {
   .catch(error => {
     console.log(`Error adding feedback`, error);
     res.sendStatus(500);    
+  })
+})
+
+router.delete('/:id', (req,res) =>{
+  let id = req.params.id;
+  let queryText = `DELETE FROM "feedback" WHERE "id"=$1;`;
+  pool.query(queryText, [id])
+  .then(result => {
+    console.log('Deleted feedback from database', result);
+    res.sendStatus(201);
+  })
+  .catch(error => {
+    console.log('Unable to delete from database', error);
+    res.sendStatus(500);
   })
 })
 
