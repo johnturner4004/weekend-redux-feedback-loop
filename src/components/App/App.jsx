@@ -1,12 +1,12 @@
 import React from 'react';
-import axios from 'axios';
 import './App.css';
 import {HashRouter as Router, Route, Link} from 'react-router-dom';
 import Feeling from '../Feeling/Feeling';
 import Understanding from '../Understanding/Understanding';
 import Supported from '../Supported/Supported';
-import Comments from '../Comments/Comments'
-import ThankYou from '../ThankYou/ThankYou'
+import Comments from '../Comments/Comments';
+import ThankYou from '../ThankYou/ThankYou';
+import Admin from '../Admin/Admin';
 
 function App() {
 
@@ -22,6 +22,7 @@ function App() {
         <Route path="/support" component={Supported} />
         <Route path="/comments" component={Comments} />
         <Route path="/thank-you" component={ThankYou} />
+        <Route path="/admin" component={Admin} />
       </Router>
     </div>
   );
