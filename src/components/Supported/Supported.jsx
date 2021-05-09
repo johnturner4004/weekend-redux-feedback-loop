@@ -15,7 +15,7 @@ function Supported() {
   const handleClick = () => {
     if (rating >= 1 && rating <= 5 && Number.isInteger(rating)) {
       dispatch({type: 'ADD_FEEDBACK', payload: {property: 'supported', value: rating}});
-      // history.push('/Supported');
+      history.push('/comments');
     } else {
       alert("Ratings must be between 1 and 5");
     }
