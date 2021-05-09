@@ -2,6 +2,7 @@ import { useSelector } from "react-redux";
 import "./ThankYou.css";
 import Button from "@material-ui/core/Button";
 import { useHistory } from "react-router";
+import axios from 'axios'
 
 function ThankYou() {
   const history = useHistory();
@@ -10,6 +11,7 @@ function ThankYou() {
 
   function handleClick() {
     console.log("click");
+    axios.push()
   }
 
   return (
