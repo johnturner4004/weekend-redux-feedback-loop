@@ -14,7 +14,7 @@ function Supported() {
 
   const handleClick = () => {
     if (rating >= 1 && rating <= 5 && Number.isInteger(rating)) {
-      dispatch({type: 'ADD_FEEDBACK', payload: {property: 'supported', value: rating}});
+      dispatch({type: 'ADD_FEEDBACK', payload: {property: 'support', value: rating}});
       history.push('/comments');
     } else {
       alert("Ratings must be between 1 and 5");
@@ -24,6 +24,14 @@ function Supported() {
   return (
     <>
       <h1>How well are you being supported?</h1>
+      <Button
+        id="button"
+        onClick={() => history.push('/understanding')}
+        variant="contained"
+        color="primary"
+      >
+        Bacl
+      </Button>
       <TextField
         id="standard-number"
         label="Supported?"

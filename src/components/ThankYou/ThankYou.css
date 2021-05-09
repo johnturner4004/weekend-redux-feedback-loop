@@ -1,0 +1,15 @@
+.flex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+table {
+  text-align: left;
+  width: fit-content;
+
+}
+
+td{
+  min-width: 200px;
+}

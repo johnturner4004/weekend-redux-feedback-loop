@@ -22,6 +22,12 @@ function Supported() {
   return (
     <>
       <h1>Any comments you want to leave?</h1>
+      <Button
+        id="button"
+        onClick={() => history.push('/support')}
+        variant="contained"
+        color="primary"
+      >Back</Button>
       <TextField
         id="standard-basic"
         label="Comments?"

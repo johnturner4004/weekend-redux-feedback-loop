@@ -15,7 +15,7 @@ function Understanding() {
   const handleClick = () => {
     if (rating >= 1 && rating <= 5 && Number.isInteger(rating)) {
       dispatch({type: 'ADD_FEEDBACK', payload: {property: 'understanding', value: rating}});
-      history.push('/supported');
+      history.push('/support');
     } else {
       alert("Ratings must be between 1 and 5");
     }
@@ -24,6 +24,14 @@ function Understanding() {
   return (
     <>
       <h1>How well are you understanding the content?</h1>
+      <Button
+        id="button"
+        onClick={() => history.push('/')}
+        variant="contained"
+        color="primary"
+      >
+        Back
+      </Button>
       <TextField
         id="standard-number"
         label="Understanding?"
